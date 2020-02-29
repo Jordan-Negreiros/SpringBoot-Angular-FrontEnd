@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {LoginServiceService} from './service/login-service.service';
 
 @Component({
   selector: 'app-root',
@@ -10,7 +11,10 @@ export class AppComponent {
 
   usuario = {login: '', senha: ''}
 
+  constructor(private loginService: LoginServiceService) {
+  }
+
   public login() {
-    console.log("Teste login : " + this.usuario.login + " senha : " + this.usuario.senha)
+    this.loginService.login(this.usuario);
   }
 }
