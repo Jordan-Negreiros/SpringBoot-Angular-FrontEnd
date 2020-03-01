@@ -1,0 +1,14 @@
+<table class="table">
+  <thead class="thead-dark">
+  <th scope="col">ID</th>
+  <th scope="col">Login</th>
+  <th scope="col">Nome</th>
+  </thead>
+  <tbody>
+  <tr *ngFor="let usuario of usuarios">
+    <td>{{ usuario.id }}</td>
+    <td>{{ usuario.login }}</td>
+    <td>{{ usuario.nome }}</td>
+  </tr>
+  </tbody>
+</table>
