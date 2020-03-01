@@ -21,4 +21,8 @@ export class UsuarioServiceService implements OnInit{
     return this.http.delete(AppConstants.baseUrl + id, {responseType : 'text'});
   }
 
+  consultarUsuario(nome: String) : Observable<any> {
+      return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome);
+  }
+
 }

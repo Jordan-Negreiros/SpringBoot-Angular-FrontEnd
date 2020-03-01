@@ -1,3 +1,14 @@
+<br/>
+<br/>
+<nav class="navbar navbar-light bg-light">
+  <form class="form-inline">
+    <input class="form-control mr-sm-2" type="search" id="nome" name="nome" [(ngModel)]="nome" placeholder="Pesquisa por nome" aria-label="Search">
+    <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="consultarUsuario()">Buscar</button>
+  </form>
+</nav>
+<br/>
+<br/>
+
 <table class="table">
   <thead class="thead-dark">
   <th scope="col">ID</th>
