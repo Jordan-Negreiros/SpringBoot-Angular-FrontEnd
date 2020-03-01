@@ -3,12 +3,14 @@
   <th scope="col">ID</th>
   <th scope="col">Login</th>
   <th scope="col">Nome</th>
+  <th scope="col">Delete</th>
   </thead>
   <tbody>
   <tr *ngFor="let usuario of usuarios">
     <td>{{ usuario.id }}</td>
     <td>{{ usuario.login }}</td>
     <td>{{ usuario.nome }}</td>
+    <td><button (click)="deleteUsuario(usuario.id)" class="btn btn-primary">Delete</button></td>
   </tr>
   </tbody>
 </table>

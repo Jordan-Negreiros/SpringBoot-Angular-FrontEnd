@@ -10,11 +10,15 @@ export class UsuarioServiceService implements OnInit{
 
   constructor(private http: HttpClient) { }
 
+  ngOnInit(): void {
+  }
+
   getUsuarioList() : Observable<any>{
     return this.http.get<any>(AppConstants.baseUrl);
   }
 
-  ngOnInit(): void {
+  deletarUsuario(id: Number) : Observable<any> {
+    return this.http.delete(AppConstants.baseUrl + id, {responseType : 'text'});
   }
 
 }
