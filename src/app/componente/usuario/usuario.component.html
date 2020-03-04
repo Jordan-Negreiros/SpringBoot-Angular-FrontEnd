@@ -2,8 +2,14 @@
 <br/>
 <nav class="navbar navbar-light bg-light">
   <form class="form-inline">
-    <input class="form-control mr-sm-2" type="search" id="nome" name="nome" [(ngModel)]="nome" placeholder="Pesquisa por nome" aria-label="Search">
+    <input class="form-control mr-sm-2" type="search" id="nome" name="nome" [(ngModel)]="nome"
+           placeholder="Pesquisa por nome" aria-label="Search">
+
     <button class="btn btn-outline-success my-2 my-sm-0" type="button" (click)="consultarUsuario()">Buscar</button>
+
+    <button class="btn btn-primary" type="button" style="margin-left: 5px"
+            [routerLink]="['/usuarioAdd']" routerLinkActive="router-link-active">Novo</button>
+
   </form>
 </nav>
 <br/>
@@ -15,13 +21,18 @@
   <th scope="col">Login</th>
   <th scope="col">Nome</th>
   <th scope="col">Delete</th>
+  <th scope="col">Editar</th>
   </thead>
   <tbody>
   <tr *ngFor="let usuario of usuarios">
     <td>{{ usuario.id }}</td>
     <td>{{ usuario.login }}</td>
     <td>{{ usuario.nome }}</td>
+
     <td><button (click)="deleteUsuario(usuario.id)" class="btn btn-primary">Delete</button></td>
+
+    <td><button [routerLink]="['/usuarioAdd', usuario.id]" routerLinkActive="router-link-active"
+                class="btn btn-primary">Editar</button></td>
   </tr>
   </tbody>
 </table>
