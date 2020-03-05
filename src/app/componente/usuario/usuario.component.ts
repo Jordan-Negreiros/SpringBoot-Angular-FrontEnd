@@ -21,13 +21,14 @@ export class UsuarioComponent implements OnInit {
   }
 
   deleteUsuario(id:Number) {
-    this.usuarioService.deletarUsuario(id).subscribe(data => {
-      console.log("Retorno método delete " + data);
+    if (confirm('Deseja mesmo remover ?')) {
+      this.usuarioService.deletarUsuario(id).subscribe(data => {
+        console.log("Retorno método delete " + data);
 
-      this.carregarUsuarios();
-    });
+        this.carregarUsuarios();
+      });
+    }
   }
-
   consultarUsuario() {
     if (this.nome !== undefined && this.nome !== '') {
       this.usuarioService.consultarUsuario(this.nome).subscribe(data => {
