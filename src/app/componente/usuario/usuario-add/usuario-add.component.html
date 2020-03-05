@@ -40,7 +40,7 @@
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="cpf">CPF</label>
-      <input type="text" class="form-control" [(ngModel)]="usuario.cpf" id="cpf" name="cpf" #cpf="ngModel"
+      <input type="text" mask="000.000.000-00" class="form-control" [(ngModel)]="usuario.cpf" id="cpf" name="cpf" #cpf="ngModel"
              required="required">
       <div *ngIf="cpf.errors"
            class="alert alert-danger"> Insira o CPF</div>
@@ -56,6 +56,32 @@
            class="alert alert-danger"> Insira o E-mail</div>
     </div>
   </div>
+
+  <div class="card text-center">
+    <div class="card-header bg-primary mb-3" style="color: white">
+      Telefones para Contato
+    </div>
+    <div class="card-body" style="padding-left: 1px">
+      <div class="form-row">
+        <div class="form-group col-md-3">
+          <input type="text" class="form-control" mask="(00) 0 0000-0000" [(ngModel)]="telefone.numero" id="numero" name="numero">
+        </div>
+        <div class="form-group col-md-2">
+          <button class="btn btn-primary" (click)="addTelefone()">Adicionar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <table class="table">
+    <tbody>
+      <tr *ngFor="let fone of usuario.telefones; let i = index">
+        <td>{{fone.id}}</td>
+        <td>{{fone.numero | mask: '(00) 0 0000-0000'}}</td>
+        <td><button class="btn btn-primary" (click)="deletarTelefone(fone.id, i)">Delete</button></td>
+      </tr>
+    </tbody>
+  </table>
 
   <div class="form-row">
     <div class="form-group col-md-6">
