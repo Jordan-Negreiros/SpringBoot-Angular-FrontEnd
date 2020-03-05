@@ -36,4 +36,12 @@ export class UsuarioServiceService implements OnInit{
   updateUsuario(user) : Observable<any> {
     return this.http.put<any>(AppConstants.baseUrl, user);
   }
+
+  usuarioAutenticado() {
+    if (localStorage.getItem('token') !== null && localStorage.getItem('token').toString().trim() !== null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
 }

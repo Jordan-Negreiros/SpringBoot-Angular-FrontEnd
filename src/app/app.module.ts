@@ -10,14 +10,15 @@ import {LoginComponent} from './login/login.component';
 import {HttpInterceptorModule} from './service/header-interceptor.service';
 import {UsuarioComponent} from './componente/usuario/usuario.component';
 import {UsuarioAddComponent} from './componente/usuario/usuario-add/usuario-add.component';
+import {GuardRoutersGuard} from './service/guard-routers.guard';
 
 export const appRouters: Routes = [
-  {path: 'home', component: HomeComponent},
+  {path: 'home', component: HomeComponent, canActivate: [GuardRoutersGuard]},
   {path: 'login', component: LoginComponent},
   {path: '', component: LoginComponent},
-  {path: 'usuarioList', component: UsuarioComponent},
-  {path: 'usuarioAdd', component: UsuarioAddComponent},
-  {path: 'usuarioAdd/:id', component: UsuarioAddComponent}
+  {path: 'usuarioList', component: UsuarioComponent, canActivate: [GuardRoutersGuard]},
+  {path: 'usuarioAdd', component: UsuarioAddComponent, canActivate: [GuardRoutersGuard]},
+  {path: 'usuarioAdd/:id', component: UsuarioAddComponent, canActivate: [GuardRoutersGuard]}
   ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(appRouters);
