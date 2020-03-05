@@ -17,6 +17,10 @@ export class UsuarioServiceService implements OnInit{
     return this.http.get<any>(AppConstants.baseUrl);
   }
 
+  getUsuarioById(id) : Observable<any> {
+    return this.http.get<any>(AppConstants.baseUrl + id);
+  }
+
   deletarUsuario(id: Number) : Observable<any> {
     return this.http.delete(AppConstants.baseUrl + id, {responseType : 'text'});
   }
@@ -25,4 +29,11 @@ export class UsuarioServiceService implements OnInit{
       return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome);
   }
 
+  salvarUsuario(user) :Observable<any> {
+    return this.http.post<any>(AppConstants.baseUrl, user);
+  }
+
+  updateUsuario(user) : Observable<any> {
+    return this.http.put<any>(AppConstants.baseUrl, user);
+  }
 }
