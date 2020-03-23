@@ -17,6 +17,10 @@ export class UsuarioServiceService implements OnInit{
     return this.http.get<any>(AppConstants.baseUrl);
   }
 
+  getUsuarioPage(pagina) : Observable<any>{
+    return this.http.get<any>(AppConstants.baseUrl + 'page/' + pagina);
+  }
+
   getUsuarioById(id) : Observable<any> {
     return this.http.get<any>(AppConstants.baseUrl + id);
   }

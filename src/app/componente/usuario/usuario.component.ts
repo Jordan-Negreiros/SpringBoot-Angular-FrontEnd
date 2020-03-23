@@ -13,6 +13,7 @@ export class UsuarioComponent implements OnInit {
 
   usuarios: Observable<User[]>;
   nome: String = '';
+  total: Number;
 
   constructor(private usuarioService: UsuarioServiceService) { }
 
@@ -41,7 +42,15 @@ export class UsuarioComponent implements OnInit {
 
   carregarUsuarios() {
     this.usuarioService.getUsuarioList().subscribe(data => {
-      this.usuarios = data;
+      this.usuarios = data.content;
+      this.total = data.totalElements;
+    })
+  }
+
+  carregarPagina(pagina: number) {
+    this.usuarioService.getUsuarioPage(pagina - 1).subscribe(data => {
+      this.usuarios = data.content;
+      this.total = data.totalElements;
     })
   }
 }

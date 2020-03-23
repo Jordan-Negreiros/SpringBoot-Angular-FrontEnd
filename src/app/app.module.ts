@@ -12,6 +12,7 @@ import {UsuarioComponent} from './componente/usuario/usuario.component';
 import {UsuarioAddComponent} from './componente/usuario/usuario-add/usuario-add.component';
 import {GuardRoutersGuard} from './service/guard-routers.guard';
 import {IConfig, NgxMaskModule} from 'ngx-mask';
+import {NgxPaginationModule} from 'ngx-pagination';
 
 export const appRouters: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [GuardRoutersGuard]},
@@ -39,7 +40,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     HttpClientModule,
     routes,
     HttpInterceptorModule,
-    NgxMaskModule.forRoot(optionsMask)
+    NgxMaskModule.forRoot(optionsMask),
+    NgxPaginationModule
   ],
   providers: [],
   bootstrap: [AppComponent]
