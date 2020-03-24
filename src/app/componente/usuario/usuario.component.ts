@@ -35,7 +35,8 @@ export class UsuarioComponent implements OnInit {
   consultarUsuario() {
     if (this.nome !== undefined && this.nome !== '') {
       this.usuarioService.consultarUsuario(this.nome).subscribe(data => {
-        this.usuarios = data;
+        this.usuarios = data.content;
+        this.total = data.totalElements;
       })
     } else {
       this.carregarUsuarios();
@@ -46,13 +47,20 @@ export class UsuarioComponent implements OnInit {
     this.usuarioService.getUsuarioList().subscribe(data => {
       this.usuarios = data.content;
       this.total = data.totalElements;
-    })
+    });
   }
 
-  carregarPagina(pagina: number) {
-    this.usuarioService.getUsuarioPage(pagina - 1).subscribe(data => {
-      this.usuarios = data.content;
-      this.total = data.totalElements;
-    })
+  carregarPagina(pagina) {
+    if (this.nome !== '') {
+      this.usuarioService.consultarUsuarioPage(this.nome, (pagina - 1)).subscribe(data => {
+        this.usuarios = data.content;
+        this.total = data.totalElements;
+      });
+    } else {
+      this.usuarioService.getUsuarioPage(pagina - 1).subscribe(data => {
+        this.usuarios = data.content;
+        this.total = data.totalElements;
+      });
+    }
   }
 }

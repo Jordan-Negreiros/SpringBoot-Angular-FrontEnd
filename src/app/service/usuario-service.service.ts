@@ -18,7 +18,7 @@ export class UsuarioServiceService implements OnInit{
   }
 
   getUsuarioPage(pagina) : Observable<any>{
-    return this.http.get<any>(AppConstants.baseUrl + 'page/' + pagina);
+    return this.http.get<any>(AppConstants.baseUrl + "page/" + pagina);
   }
 
   getUsuarioById(id) : Observable<any> {
@@ -31,6 +31,11 @@ export class UsuarioServiceService implements OnInit{
 
   consultarUsuario(nome: String) : Observable<any> {
       return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome);
+  }
+
+  consultarUsuarioPage(nome: String, page: Number) : Observable<any> {
+      return this.http.get(AppConstants.baseUrl + "usuarioPorNome/" + nome +
+      "/page/" + page);
   }
 
   salvarUsuario(user) :Observable<any> {
