@@ -26,14 +26,15 @@
     <th scope="col">Editar</th>
     </thead>
     <tbody>
-    <tr *ngFor="let usuario of usuarios | paginate:{ itemsPerPage:5, currentPage: p, totalItems: total }">
+    <tr *ngFor="let usuario of usuarios | paginate:{ itemsPerPage:5, currentPage: p, totalItems: total };
+    let i = index">
       <td>{{ usuario.id }}</td>
       <td>{{ usuario.login }}</td>
       <td>{{ usuario.nome }}</td>
       <td>{{ usuario.cpf }}</td>
 
       <td>
-        <button (click)="deleteUsuario(usuario.id)" class="btn btn-primary">Delete</button>
+        <button (click)="deleteUsuario(usuario.id, i)" class="btn btn-primary">Delete</button>
       </td>
 
       <td>

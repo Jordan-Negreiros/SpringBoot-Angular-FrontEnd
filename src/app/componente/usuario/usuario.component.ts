@@ -11,7 +11,7 @@ import {User} from '../../model/user';
 export class UsuarioComponent implements OnInit {
 
 
-  usuarios: Observable<User[]>;
+  usuarios: Array<User[]>;
   nome: String = '';
   total: Number;
 
@@ -21,12 +21,14 @@ export class UsuarioComponent implements OnInit {
     this.carregarUsuarios();
   }
 
-  deleteUsuario(id:Number) {
+  deleteUsuario(id:Number, index) {
     if (confirm('Deseja mesmo remover ?')) {
       this.usuarioService.deletarUsuario(id).subscribe(data => {
-        console.log("Retorno método delete " + data);
+        //console.log("Retorno método delete " + data);
+        //this.carregarUsuarios();
+        //});
 
-        this.carregarUsuarios();
+        this.usuarios.splice(index, 1);/* remove da tela */
       });
     }
   }
