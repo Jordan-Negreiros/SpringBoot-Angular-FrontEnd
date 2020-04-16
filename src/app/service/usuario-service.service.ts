@@ -25,6 +25,10 @@ export class UsuarioServiceService implements OnInit{
     return this.http.get<any>(AppConstants.baseUrl + id);
   }
 
+  getProfissaoList(): Observable<any> {
+    return this.http.get<any>(AppConstants.baseProfissao);
+  }
+
   deletarUsuario(id: Number) : Observable<any> {
     return this.http.delete(AppConstants.baseUrl + id, {responseType : 'text'});
   }

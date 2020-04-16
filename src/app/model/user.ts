@@ -1,4 +1,5 @@
 import {Telefone} from './telefone';
+import {Profissao} from './profissao';
 
 export class User {
 
@@ -11,4 +12,6 @@ export class User {
   dataNascimento: String;
 
   telefones: Array<Telefone>;
+
+  profissao: Profissao = new Profissao();
 }

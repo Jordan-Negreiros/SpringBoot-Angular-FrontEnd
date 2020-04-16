@@ -5,6 +5,7 @@ import {UsuarioServiceService} from '../../../service/usuario-service.service';
 import {Telefone} from '../../../model/telefone';
 import {FormControl, Validators} from '@angular/forms';
 import {NgbDateAdapter, NgbDateParserFormatter, NgbDateStruct} from '@ng-bootstrap/ng-bootstrap';
+import {Profissao} from '../../../model/profissao';
 
 @Injectable()
 export class FormatDateAdapter extends NgbDateAdapter<string> {
@@ -73,6 +74,7 @@ export class UsuarioAddComponent implements OnInit {
 
   usuario = new User();
   telefone = new Telefone();
+  profissoes : Array<Profissao>;
 
   control: FormControl = new FormControl('dataNascimento', Validators.required);
 
@@ -87,6 +89,10 @@ export class UsuarioAddComponent implements OnInit {
         this.usuario = data;
       });
     }
+
+    this.userService.getProfissaoList().subscribe(data => {
+      this.profissoes = data;
+    });
 
   }
 
