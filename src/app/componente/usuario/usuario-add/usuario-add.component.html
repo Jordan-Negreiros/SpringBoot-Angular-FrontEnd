@@ -13,9 +13,11 @@
   <div class="form-row">
     <div class="form-group col-md-12">
       <label for="nome">Nome</label>
-      <input type="text" class="form-control" [(ngModel)]="usuario.nome" id="nome" name="nome" #nome="ngModel" required="required">
+      <input type="text" class="form-control" [(ngModel)]="usuario.nome" id="nome" name="nome" #nome="ngModel"
+             required="required">
       <div *ngIf="nome.errors"
-           class="alert alert-danger"> Insira o nome</div>
+           class="alert alert-danger"> Insira o nome
+      </div>
     </div>
   </div>
 
@@ -25,7 +27,8 @@
       <input type="text" class="form-control" [(ngModel)]="usuario.login" id="login" name="login"
              #login="ngModel" required="required">
       <div *ngIf="login.errors"
-           class="alert alert-danger"> Insira o login</div>
+           class="alert alert-danger"> Insira o login
+      </div>
     </div>
 
     <div class="form-group col-md-6">
@@ -33,17 +36,35 @@
       <input type="password" class="form-control" [(ngModel)]="usuario.senha" id="senha" name="senha" #senha="ngModel"
              required="required">
       <div *ngIf="senha.errors"
-           class="alert alert-danger"> Insira a senha</div>
+           class="alert alert-danger"> Insira a senha
+      </div>
     </div>
   </div>
 
   <div class="form-row">
     <div class="form-group col-md-3">
       <label for="cpf">CPF</label>
-      <input type="text" mask="000.000.000-00" class="form-control" [(ngModel)]="usuario.cpf" id="cpf" name="cpf" #cpf="ngModel"
+      <input type="text" mask="000.000.000-00" class="form-control" [(ngModel)]="usuario.cpf" id="cpf" name="cpf"
+             #cpf="ngModel"
              required="required">
       <div *ngIf="cpf.errors"
-           class="alert alert-danger"> Insira o CPF</div>
+           class="alert alert-danger"> Insira o CPF
+      </div>
+    </div>
+
+    <div class="form-group col-md-3">
+      <label for="dataNascimento">Data Nasc.</label>
+      <div class="input-group">
+        <input name="dataNascimento" type="text" class="form-control" [formControl]="control" placeholder="dd/mm/yyyy"
+               ngbDatepicker #dataNascimento="ngbDatepicker" [(ngModel)]="usuario.dataNascimento"
+               id="dataNascimento" required="true">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dataNascimento.toggle()" type="button"></button>
+        </div>
+        <div *ngIf="control.invalid"
+             class="alert alert-danger"> Insira sua data de Nascimento
+        </div>
+      </div>
     </div>
   </div>
 
@@ -53,7 +74,8 @@
       <input type="text" class="form-control" [(ngModel)]="usuario.email" id="email" name="email" #email="ngModel"
              required="required">
       <div *ngIf="email.errors"
-           class="alert alert-danger"> Insira o E-mail</div>
+           class="alert alert-danger"> Insira o E-mail
+      </div>
     </div>
   </div>
 
@@ -64,7 +86,8 @@
     <div class="card-body" style="padding-left: 1px">
       <div class="form-row">
         <div class="form-group col-md-3">
-          <input type="text" class="form-control" mask="(00) 0 0000-0000" [(ngModel)]="telefone.numero" id="numero" name="numero">
+          <input type="text" class="form-control" mask="(00) 0 0000-0000" [(ngModel)]="telefone.numero" id="numero"
+                 name="numero">
         </div>
         <div class="form-group col-md-2">
           <button class="btn btn-primary" (click)="addTelefone()">Adicionar</button>
@@ -75,11 +98,13 @@
 
   <table class="table">
     <tbody>
-      <tr *ngFor="let fone of usuario.telefones; let i = index">
-        <td>{{fone.id}}</td>
-        <td>{{fone.numero | mask: '(00) 0 0000-0000'}}</td>
-        <td><button class="btn btn-primary" (click)="deletarTelefone(fone.id, i)">Delete</button></td>
-      </tr>
+    <tr *ngFor="let fone of usuario.telefones; let i = index">
+      <td>{{fone.id}}</td>
+      <td>{{fone.numero | mask: '(00) 0 0000-0000'}}</td>
+      <td>
+        <button class="btn btn-primary" (click)="deletarTelefone(fone.id, i)">Delete</button>
+      </td>
+    </tr>
     </tbody>
   </table>
 

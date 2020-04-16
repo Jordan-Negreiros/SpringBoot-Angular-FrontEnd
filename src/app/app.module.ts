@@ -2,7 +2,7 @@ import {BrowserModule} from '@angular/platform-browser';
 import {ModuleWithProviders, NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {HttpClientModule} from '@angular/common/http'; /* Requisições Ajax */
 import {HomeComponent} from './home/home.component';
 import {RouterModule, Routes} from '@angular/router';
@@ -13,6 +13,7 @@ import {UsuarioAddComponent} from './componente/usuario/usuario-add/usuario-add.
 import {GuardRoutersGuard} from './service/guard-routers.guard';
 import {IConfig, NgxMaskModule} from 'ngx-mask';
 import {NgxPaginationModule} from 'ngx-pagination';
+import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 
 export const appRouters: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [GuardRoutersGuard]},
@@ -41,7 +42,9 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     routes,
     HttpInterceptorModule,
     NgxMaskModule.forRoot(optionsMask),
-    NgxPaginationModule
+    NgxPaginationModule,
+    NgbModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

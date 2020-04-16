@@ -8,6 +8,7 @@ export class User {
   cpf: String;
   email: String;
   senha: String;
+  dataNascimento: String;
 
   telefones: Array<Telefone>;
 }
