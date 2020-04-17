@@ -5,8 +5,9 @@
   </div>
 
   <div class="form-group">
-    <label for="login">E-mail</label>
-    <input type="email" class="form-control" #email="ngModel" [(ngModel)]="usuario.login" id="login" name="login" required>
+    <label for="login">Login</label>
+    <input type="email" class="form-control" #email="ngModel" [(ngModel)]="usuario.login"
+           id="login" name="login" required>
     <div *ngIf="email.invalid" class="alert alert-danger">
       Login deve ser informado
     </div>
@@ -14,12 +15,18 @@
 
   <div class="form-group">
     <label for="senha">Password</label>
-    <input type="password" class="form-control" #senha="ngModel" [(ngModel)]="usuario.senha" id="senha" name="senha" placeholder="Informe a Senha" required>
+    <input type="password" class="form-control" #senha="ngModel" [(ngModel)]="usuario.senha"
+           id="senha" name="senha" placeholder="Informe a Senha" required>
     <div *ngIf="senha.invalid" class="alert alert-danger">
       Senha deve ser informada
     </div>
   </div>
 
-  <button type="button" [disabled]="email.invalid || senha.invalid" class="btn btn-primary" (click)="login()">Acessar</button>
+  <button type="button" [disabled]="email.invalid || senha.invalid"
+          class="btn btn-primary" (click)="login()">Acessar</button>
+
+  <button type="button" [disabled]="email.invalid"
+          style="margin-left: 10px"
+          class="btn btn-primary" (click)="recuperar()">Recuperar Acesso</button>
 
 </form>

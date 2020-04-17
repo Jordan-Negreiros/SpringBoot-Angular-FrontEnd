@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AppConstants} from '../app-constants';
 import {Router} from '@angular/router';
+import {User} from '../model/user';
 
 @Injectable({
   providedIn: 'root'
@@ -26,6 +27,24 @@ export class LoginServiceService {
 
         console.error("Erro ao fazer login");
         alert('Acesso Negado');
+
+        });
+  }
+
+  public recuperar(login) {
+
+    let user = new User();
+    user.login = login;
+
+
+      return this.http.post(AppConstants.baseUrlPath + 'recuperar/', user).subscribe(data => {
+
+       alert(JSON.parse(JSON.stringify(data)).error)
+
+      }, error => {
+
+        console.error("Erro ao recuperar login");
+        alert('Erro ao recuperar login!');
 
         });
   }

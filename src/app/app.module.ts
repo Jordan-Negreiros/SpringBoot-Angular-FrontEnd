@@ -14,6 +14,7 @@ import {GuardRoutersGuard} from './service/guard-routers.guard';
 import {IConfig, NgxMaskModule} from 'ngx-mask';
 import {NgxPaginationModule} from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import {NgxCurrencyModule} from 'ngx-currency';
 
 export const appRouters: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [GuardRoutersGuard]},
@@ -44,7 +45,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     NgxMaskModule.forRoot(optionsMask),
     NgxPaginationModule,
     NgbModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxCurrencyModule
   ],
   providers: [],
   bootstrap: [AppComponent]

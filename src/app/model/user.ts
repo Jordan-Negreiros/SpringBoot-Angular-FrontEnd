@@ -10,6 +10,7 @@ export class User {
   email: String;
   senha: String;
   dataNascimento: String;
+  salario: DoubleRange;
 
   telefones: Array<Telefone>;
 
