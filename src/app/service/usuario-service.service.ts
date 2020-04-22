@@ -61,4 +61,12 @@ export class UsuarioServiceService implements OnInit{
   removerTelefone(id): Observable<any> {
     return this.http.delete(AppConstants.baseUrl + "removerTelefone/" + id, {responseType: 'text'});
   }
+
+  downloadPdfRelatorio() {
+    return this.http.get(AppConstants.baseUrl + 'relatorio', {responseType: 'text'})
+      .subscribe(data => {
+        document.querySelector('iframe').src = data;
+      });
+  }
+
 }

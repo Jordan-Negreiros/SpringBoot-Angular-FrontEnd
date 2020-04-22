@@ -19,7 +19,7 @@ export class LoginServiceService {
         let token = JSON.parse(JSON.stringify(data)).Authorization.split(' ')[1];
 
         localStorage.setItem("token", token);
-        //console.info(localStorage.getItem("token"))
+        //console.info(localStorage.getItem("token"));
 
         this.router.navigate(['home']);
 
