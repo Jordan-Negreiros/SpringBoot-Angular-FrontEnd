@@ -2,6 +2,7 @@ import {Injectable, OnInit} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {AppConstants} from '../app-constants';
 import {Observable} from 'rxjs';
+import {UserReport} from '../model/UserReport';
 
 @Injectable({
   providedIn: 'root'
@@ -68,5 +69,14 @@ export class UsuarioServiceService implements OnInit{
         document.querySelector('iframe').src = data;
       });
   }
+
+  downloadPdfRelatorioParam(userReport: UserReport) {
+    return this.http.post(AppConstants.baseUrl + 'relatorio/', userReport, {responseType: 'text'})
+      .subscribe(data => {
+        document.querySelector('iframe').src = data;
+      });
+  }
+
+
 
 }

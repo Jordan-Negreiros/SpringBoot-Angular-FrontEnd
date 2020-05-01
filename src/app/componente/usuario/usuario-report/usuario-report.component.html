@@ -1,0 +1,69 @@
+<form class="container" #formValidate="ngForm">
+
+  <h3 class="text-center display-4" style="margin-top: 50px">Relatório de Usuário</h3>
+
+  <div class="form-row" style="margin-top: 100px">
+
+    <div class="form-group col-md-6">
+      <label for="dataInicio">Data Nasc. Início</label>
+      <div class="input-group">
+        <input name="dataInicio" type="text" class="form-control" [formControl]="control" placeholder="dd/mm/yyyy"
+               ngbDatepicker #dataInicio="ngbDatepicker" [(ngModel)]="userReport.dataInicio"
+               id="dataInicio" required="true">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dataInicio.toggle()" type="button"></button>
+        </div>
+      </div>
+      <div *ngIf="control.invalid"
+           class="alert alert-danger"> Insira a data inicial do Relatório
+      </div>
+    </div>
+
+    <div class="form-group col-md-6">
+      <label for="dataFim">Data Nasc. Fim</label>
+      <div class="input-group">
+        <input name="dataFim" type="text" class="form-control" [formControl]="control2" placeholder="dd/mm/yyyy"
+               ngbDatepicker #dataFim="ngbDatepicker" [(ngModel)]="userReport.dataFim"
+               id="dataFim" required="true">
+        <div class="input-group-append">
+          <button class="btn btn-outline-secondary calendar" (click)="dataFim.toggle()" type="button"></button>
+        </div>
+      </div>
+      <div *ngIf="control2.invalid"
+           class="alert alert-danger"> Insira a data final do Relatório
+      </div>
+    </div>
+
+  </div>
+
+
+  <div class="form-row">
+    <div class="form-group col-md-6">
+
+        <button type="button" class="btn btn-primary"
+                (click)="imprimeRelatorio()" data-toggle="modal" data-target="#myModal"
+                style="margin-left: 400px; margin-top: 50px; min-width: 300px">Imprimir PDF</button>
+
+    </div>
+  </div>
+
+</form>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" style="min-width: 90%; min-height: 90%; height: 90%">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <iframe id="pdf" width="100%" height="700" frameborder="0" allowtransparency="true"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
+      </div>
+    </div>
+  </div>
+</div>
