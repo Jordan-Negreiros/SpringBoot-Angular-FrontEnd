@@ -77,6 +77,8 @@ export class UsuarioServiceService implements OnInit{
       });
   }
 
-
+  carregarGrafico() : Observable<any> {
+    return this.http.get(AppConstants.baseUrl + 'grafico');
+  }
 
 }

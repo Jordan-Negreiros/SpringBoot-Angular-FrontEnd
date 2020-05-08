@@ -16,6 +16,8 @@ import {NgxPaginationModule} from 'ngx-pagination';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 import {NgxCurrencyModule} from 'ngx-currency';
 import {UsuarioReportComponent} from './componente/usuario/usuario-report/usuario-report.component';
+import {ChartsModule} from 'ng2-charts';
+import { BarChartComponent } from './componente/bar-chart/bar-chart.component';
 
 export const appRouters: Routes = [
   {path: 'home', component: HomeComponent, canActivate: [GuardRoutersGuard]},
@@ -24,7 +26,8 @@ export const appRouters: Routes = [
   {path: 'usuarioList', component: UsuarioComponent, canActivate: [GuardRoutersGuard]},
   {path: 'usuarioAdd', component: UsuarioAddComponent, canActivate: [GuardRoutersGuard]},
   {path: 'usuarioAdd/:id', component: UsuarioAddComponent, canActivate: [GuardRoutersGuard]},
-  {path: 'usuarioReport', component: UsuarioReportComponent, canActivate: [GuardRoutersGuard]}
+  {path: 'usuarioReport', component: UsuarioReportComponent, canActivate: [GuardRoutersGuard]},
+  {path: 'chart', component: BarChartComponent, canActivate: [GuardRoutersGuard]}
   ];
 
 export const routes: ModuleWithProviders = RouterModule.forRoot(appRouters);
@@ -37,7 +40,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     LoginComponent,
     UsuarioComponent,
     UsuarioAddComponent,
-    UsuarioReportComponent
+    UsuarioReportComponent,
+    BarChartComponent
   ],
   imports: [
     BrowserModule,
@@ -49,7 +53,8 @@ export const optionsMask : Partial<IConfig> | (() => Partial<IConfig>) = {};
     NgxPaginationModule,
     NgbModule,
     ReactiveFormsModule,
-    NgxCurrencyModule
+    NgxCurrencyModule,
+    ChartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
